@@ -7,8 +7,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.DefaultTableColumnModel;
-import javax.swing.table.DefaultTableModel;
 
 import co.edu.unbosque.Controller.Control;
 
@@ -36,13 +34,13 @@ public class VentanaPasaportes extends JFrame {
 		
 		for (int i = 0; i < control.lista_pasaportes.size(); i++) {
 			
-			String[] nombres = { control.lista_pasaportes.get(i).nombre_dueño };
-			String[] cedula = { control.lista_pasaportes.get(i).cedula };
-			Object[] edad = { control.lista_pasaportes.get(i).edad };
-			Object[] estatura = { control.lista_pasaportes.get(i).estatura };
-			String[] estado = { control.lista_pasaportes.get(i).estado_pasaporte };
-			String[] categoria = { control.lista_pasaportes.get(i).categoria };
-			Object[] numero_atracciones = { control.lista_pasaportes.get(i).numero_atracciones };
+			String[] nombres = { control.lista_pasaportes.get(i).getNombre_dueño() };
+			String[] cedula = { control.lista_pasaportes.get(i).getCedula() };
+			Object[] edad = { control.lista_pasaportes.get(i).getEdad() };
+			Object[] estatura = { control.lista_pasaportes.get(i).getEstatura() };
+			String[] estado = { control.lista_pasaportes.get(i).getEstado_pasaporte() };
+			String[] categoria = { control.lista_pasaportes.get(i).getCategoria() };
+			Object[] numero_atracciones = { control.lista_pasaportes.get(i).getNumero_atracciones() };
 
 			Object [][] datos1 = { nombres, cedula, edad, estatura, estado, categoria, numero_atracciones };
 			
@@ -67,19 +65,11 @@ public class VentanaPasaportes extends JFrame {
 //		model.addColumn("Número de Atracciones");
 //
 //		table.setModel(model);
-//
-//		String nombres = control.lista_pasaportes.get(index);
-//		String[] cedula = { control.lista_pasaportes.get(i).cedula };
-//		int[] edad = { control.lista_pasaportes.get(i).edad };
-//		int[] estatura = { control.lista_pasaportes.get(i).estatura };
-//		String[] estado = { control.lista_pasaportes.get(i).estado_pasaporte };
-//		String[] categoria = { control.lista_pasaportes.get(i).categoria };
-//		int[] numero_atracciones = { control.lista_pasaportes.get(i).numero_atracciones };
 
 		table.getColumnModel().getColumn(0).setCellRenderer(Alinear);
 		JScrollPane scroll = new JScrollPane(table);
-
 		getContentPane().add(scroll);
+		table.setVisible(true);
 
 	}
 }

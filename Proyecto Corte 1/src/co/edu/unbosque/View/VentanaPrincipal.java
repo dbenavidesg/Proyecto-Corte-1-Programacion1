@@ -42,7 +42,7 @@ public class VentanaPrincipal extends JFrame {
 		boton_recaudo = new JButton("Recaudo pasportes");
 		boton_recaudo.setBounds(745, 600, 150, 50);
 		add(boton_recaudo);
-
+		
 		imagen_fondo = new Img_fondo();
 		imagen_fondo.setBounds(0, 0, 950, 750);
 		add(imagen_fondo);
