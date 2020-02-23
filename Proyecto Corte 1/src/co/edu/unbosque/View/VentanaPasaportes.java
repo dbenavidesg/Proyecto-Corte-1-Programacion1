@@ -30,9 +30,9 @@ public class VentanaPasaportes extends JFrame {
 
 	}
 
-	public Object filasTable() {
-
-		Object [][] datos = new Object [][]{};	
+	public void inicializarComponentes() {
+		
+		Object [][] datos = new Object [][] {};	
 		
 		for (int i = 0; i < control.lista_pasaportes.size(); i++) {
 			
@@ -44,18 +44,15 @@ public class VentanaPasaportes extends JFrame {
 			String[] categoria = { control.lista_pasaportes.get(i).categoria };
 			Object[] numero_atracciones = { control.lista_pasaportes.get(i).numero_atracciones };
 
-			datos = { nombres, cedula, edad, estatura, estado, categoria, numero_atracciones };
-
+			Object [][] datos1 = { nombres, cedula, edad, estatura, estado, categoria, numero_atracciones };
+			
+			datos = datos1;
 		}
-
-	}
-
-	public void inicializarComponentes() {
 
 		String[] nombre_columnas = { "Nombre Dueño", "Cédula", "Edad", "Estatura", "Estado Pasaporte", "Categoria",
 				"Número de Atracciones" };
 
-		JTable table = new JTable((Object[][]) filasTable(), nombre_columnas);
+		JTable table = new JTable(datos, nombre_columnas);
 
 		DefaultTableCellRenderer Alinear = new DefaultTableCellRenderer();
 		Alinear.setHorizontalAlignment(SwingConstants.CENTER);
