@@ -1,6 +1,6 @@
 package co.edu.unbosque.Model;
 
-public abstract class Pasaporte {
+public class Pasaporte {
 
 	public String nombre_dueño;
 	public String cedula;
@@ -9,6 +9,7 @@ public abstract class Pasaporte {
 	public String estado_pasaporte;
 	public String categoria;
 	public int numero_atracciones;
+	
 
 	public Pasaporte(String pNombre_dueño, String pCedula, int pEdad, int pEstatura, String pEstado_Pasaporte,
 			String pCategoria, int pNumero_atracciones) {
