@@ -65,8 +65,11 @@ public class VentanaPasaportes extends JFrame {
 //		model.addColumn("Número de Atracciones");
 //
 //		table.setModel(model);
-
-		table.getColumnModel().getColumn(0).setCellRenderer(Alinear);
+		
+		for (int i = 0; i < nombre_columnas.length; i++) {
+			table.getColumnModel().getColumn(i).setCellRenderer(Alinear);
+		}
+		
 		JScrollPane scroll = new JScrollPane(table);
 		getContentPane().add(scroll);
 		table.setVisible(true);

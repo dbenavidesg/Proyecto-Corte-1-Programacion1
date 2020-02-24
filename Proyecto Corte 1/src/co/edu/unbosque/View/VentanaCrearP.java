@@ -20,13 +20,15 @@ public class VentanaCrearP extends JFrame {
 	public JLabel et_edad;
 	public JButton validar1;
 	public JLabel Tit;
+	
 	public Panel_categoria p1;
+	public Panel_CheckBox panel_checkbox;
 
 	public VentanaCrearP() {
 
 		getContentPane().setLayout(null);
 		setTitle(".:CREAR PASAPORTE:.");
-		setSize(600, 800);
+		setSize(700, 800);
 		setResizable(false);
 		setBackground(Color.gray);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -76,10 +78,13 @@ public class VentanaCrearP extends JFrame {
 		//mv boli
 
 		p1 = new Panel_categoria();
-		p1.setBounds(0, 300, 650, 200);
+		p1.setBounds(0, 300, 700, 200);
 		getContentPane().add(p1);
 		setLocationRelativeTo(null);
 		setVisible(false);
-
+		
+		panel_checkbox = new Panel_CheckBox();
+		panel_checkbox.setBounds(0, 500, 700, 300);
+		add(panel_checkbox);
 	}
 }

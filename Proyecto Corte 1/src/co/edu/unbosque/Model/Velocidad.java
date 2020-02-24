@@ -21,13 +21,13 @@ public class Velocidad extends Atraccion {
 
 		if (pasaporte.getEstatura() >= 130) {
 
-			if (pasaporte.getCategoria() == "oro") {
+			if (pasaporte.getCategoria() == "Oro") {
 				precio += precio * 0.05;
 
-			} else if (pasaporte.getCategoria() == "plata") {
+			} else if (pasaporte.getCategoria() == "Plata") {
 				precio += precio * 0.1;
 
-			} else if (pasaporte.getCategoria() == "bronze") {
+			} else if (pasaporte.getCategoria() == "Bronze") {
 				precio += precio * 0.2;
 
 			}
