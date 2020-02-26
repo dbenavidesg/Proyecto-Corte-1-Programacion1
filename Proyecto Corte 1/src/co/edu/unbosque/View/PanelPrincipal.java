@@ -14,6 +14,7 @@ public class PanelPrincipal extends JPanel {
 	public JButton boton_Elaboracion;
 	public JButton boton_vendidos;
 	public JButton boton_recaudo;
+	public JButton ver_atrac;
 
 	public PanelPrincipal() {
 
@@ -48,9 +49,16 @@ public class PanelPrincipal extends JPanel {
 		boton_recaudo.setBackground(Color.white);
 		boton_recaudo.setForeground(Color.magenta);
 		add(boton_recaudo);
+		
+		ver_atrac = new JButton("Ver atracciones");
+		ver_atrac.setBounds(900, 600, 150, 50);
+		ver_atrac.setBackground(Color.white);
+		ver_atrac.setForeground(Color.pink);
+		add(ver_atrac);
+
 
 		fondo = new JLabel();
-		fondo.setBounds(0, 0, 950, 750);
+		fondo.setBounds(0, 0, 3000, 750);
 		add(fondo);
 
 	}

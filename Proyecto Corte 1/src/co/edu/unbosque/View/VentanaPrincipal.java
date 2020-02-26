@@ -15,13 +15,13 @@ public class VentanaPrincipal extends JFrame {
 
 		getContentPane().setLayout(null);
 		setTitle(".:GRITOMAX:.");
-		setSize(950, 750);
+		setSize(1080, 750);
 		setResizable(false);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 
 		pnl_principal = new PanelPrincipal();
-		pnl_principal.setBounds(0, 0, 950, 750);
+		pnl_principal.setBounds(0, 0, 2000, 750);
 		add(pnl_principal);
 
 		setVisible(true);

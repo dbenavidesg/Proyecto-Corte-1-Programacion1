@@ -116,7 +116,7 @@ public class Control implements ActionListener {
 
 		//Imagen fondo
 		img = new ImageIcon("./Imagenes/powerslave.jpg");
-		icono = new ImageIcon(img.getImage().getScaledInstance(950, 750, Image.SCALE_DEFAULT));
+		icono = new ImageIcon(img.getImage().getScaledInstance(1100, 750, Image.SCALE_DEFAULT));
 		vnt_principal.pnl_principal.fondo.setIcon(icono);
 
 		vnt_principal.pnl_principal.boton_verTodos.addActionListener(this);
@@ -137,6 +137,7 @@ public class Control implements ActionListener {
 		if (e.getActionCommand().equals("Crear pasaporte")) {
 			vnt_crear_p = new VentanaCrearP();
 			vnt_principal.setVisible(false);
+			vnt_principal.pnl_principal.setVisible(false);
 			vnt_crear_p.p1.validar2.addActionListener(this);
 
 			// Estado pasaporte con un booleano y un if --> Si se crea con exito el

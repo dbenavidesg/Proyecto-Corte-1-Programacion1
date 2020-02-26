@@ -8,6 +8,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+import co.edu.unbosque.Controller.Control;
+
 public class VentanaCrearP extends JFrame {
 
 	public JTextField nombre;
@@ -28,7 +30,6 @@ public class VentanaCrearP extends JFrame {
 
 		getContentPane().setLayout(null);
 		setTitle(".:CREAR PASAPORTE:.");
-//		setForeground(Color.red);
 		setSize(700, 800);
 		setResizable(false);
 		setBackground(Color.gray);
@@ -40,10 +41,11 @@ public class VentanaCrearP extends JFrame {
 
 	public void inicializar() {
 		
-		panel_checkbox = new Panel_CheckBox();
-		panel_checkbox.setBounds(20, 500, 700, 150);
-		add(panel_checkbox);
-		panel_checkbox.setVisible(false);
+		Tit = new JLabel(".:CREAR NUEVO PASAPORTE:.");
+		Tit.setBounds(200, 20, 300, 50);
+		Tit.setForeground(Color.red);
+		Tit.setFont(new Font("Arial", Font.BOLD, 18));
+		add(Tit);
 
 		nombre = new JTextField();
 		nombre.setBounds(200, 70, 100, 30);
@@ -77,18 +79,17 @@ public class VentanaCrearP extends JFrame {
 		et_edad.setBounds(360, 130, 100, 30);
 		add(et_edad);
 
-		Tit = new JLabel(".:CREAR NUEVO PASAPORTE:.");
-		Tit.setBounds(200, 20, 300, 50);
-		Tit.setForeground(Color.red);
-		Tit.setFont(new Font("Arial", Font.BOLD, 18));
-		add(Tit);
-
 		p1 = new Panel_categoria();
 		p1.setBounds(0, 200, 700, 150);
 		getContentPane().add(p1);
 		setLocationRelativeTo(null);
 		setVisible(false);
 		
+		panel_checkbox = new Panel_CheckBox();
+		panel_checkbox.setBounds(20, 500, 700, 150);
+		panel_checkbox.setVisible(false);
+		add(panel_checkbox);
+
 
 	}
 }
