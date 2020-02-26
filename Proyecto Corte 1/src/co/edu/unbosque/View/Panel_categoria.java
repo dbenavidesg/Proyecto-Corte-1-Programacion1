@@ -25,16 +25,16 @@ public class Panel_categoria extends JPanel {
 	public void inicializar() {
 
 		et_categoria = new JLabel("Categoria pasaporte: ");
-		et_categoria.setBounds(150, 60, 130, 30);
+		et_categoria.setBounds(200, 40, 130, 30);
 		add(et_categoria);
 
 		String[] kk = { "Oro", "Plata", "Bronce" };
 		categoria = new JComboBox<String>(kk);
-		categoria.setBounds(300, 60, 100, 30);
+		categoria.setBounds(350, 40, 100, 30);
 		add(categoria);
 
 		validar2 = new JButton("Validar");
-		validar2.setBounds(300, 100, 80, 30);
+		validar2.setBounds(300, 90, 80, 20);
 		add(validar2);
 
 	}

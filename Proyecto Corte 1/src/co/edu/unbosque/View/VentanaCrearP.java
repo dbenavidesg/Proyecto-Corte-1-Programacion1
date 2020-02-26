@@ -20,7 +20,7 @@ public class VentanaCrearP extends JFrame {
 	public JLabel et_edad;
 	public JButton validar1;
 	public JLabel Tit;
-	
+
 	public Panel_categoria p1;
 	public Panel_CheckBox panel_checkbox;
 
@@ -28,6 +28,7 @@ public class VentanaCrearP extends JFrame {
 
 		getContentPane().setLayout(null);
 		setTitle(".:CREAR PASAPORTE:.");
+//		setForeground(Color.red);
 		setSize(700, 800);
 		setResizable(false);
 		setBackground(Color.gray);
@@ -38,53 +39,56 @@ public class VentanaCrearP extends JFrame {
 	}
 
 	public void inicializar() {
+		
+		panel_checkbox = new Panel_CheckBox();
+		panel_checkbox.setBounds(20, 500, 700, 150);
+		add(panel_checkbox);
+		panel_checkbox.setVisible(false);
 
 		nombre = new JTextField();
-		nombre.setBounds(240, 90, 150, 30);
+		nombre.setBounds(200, 70, 100, 30);
 		add(nombre);
 
 		et_nombre = new JLabel("Nombre: ");
-		et_nombre.setBounds(160, 90, 100, 30);
+		et_nombre.setBounds(140, 70, 100, 30);
 		add(et_nombre);
 
 		cedula = new JTextField();
-		cedula.setBounds(240, 145, 150, 30);
+		cedula.setBounds(410, 70, 100, 30);
 		add(cedula);
 
 		et_cedula = new JLabel("Cedula: ");
-		et_cedula.setBounds(160, 145, 100, 30);
+		et_cedula.setBounds(360, 70, 100, 30);
 		add(et_cedula);
 
 		estatura = new JTextField();
-		estatura.setBounds(240, 200, 150, 30);
+		estatura.setBounds(200, 130, 100, 30);
 		add(estatura);
 
 		et_estatura = new JLabel("Estatura: ");
-		et_estatura.setBounds(160, 200, 100, 30);
+		et_estatura.setBounds(140, 130, 100, 30);
 		add(et_estatura);
 
 		edad = new JTextField();
-		edad.setBounds(240, 250, 150, 30);
+		edad.setBounds(410, 130, 100, 30);
 		add(edad);
 
 		et_edad = new JLabel("Edad: ");
-		et_edad.setBounds(160, 250, 100, 30);
+		et_edad.setBounds(360, 130, 100, 30);
 		add(et_edad);
 
 		Tit = new JLabel(".:CREAR NUEVO PASAPORTE:.");
-		Tit.setBounds(150, 20, 350, 50);
-		Tit.setFont(new Font("Arial", Font.TRUETYPE_FONT, 20));
+		Tit.setBounds(200, 20, 300, 50);
+		Tit.setForeground(Color.red);
+		Tit.setFont(new Font("Arial", Font.BOLD, 18));
 		add(Tit);
-		//mv boli
 
 		p1 = new Panel_categoria();
-		p1.setBounds(0, 300, 700, 200);
+		p1.setBounds(0, 200, 700, 150);
 		getContentPane().add(p1);
 		setLocationRelativeTo(null);
 		setVisible(false);
 		
-		panel_checkbox = new Panel_CheckBox();
-		panel_checkbox.setBounds(0, 500, 700, 300);
-		add(panel_checkbox);
+
 	}
 }

@@ -1,6 +1,10 @@
 package co.edu.unbosque.View;
 
+import java.awt.Checkbox;
 import java.awt.Color;
+import java.awt.FlowLayout;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JCheckBox;
 import javax.swing.JPanel;
@@ -13,24 +17,40 @@ public class Panel_CheckBox extends JPanel {
 
 	public JTextField campo_texto_atracciones;
 	public JScrollPane barraDesplazamiento;
-	public JCheckBox check_box;
-	
+	public JCheckBox checkbox;
+
 	public Control control;
 
 	public Panel_CheckBox() {
 
-		setLayout(null);
+		setLayout(new FlowLayout());
 		setBackground(Color.white);
+		control = new Control();
+		inicializarBarra();
+		inicializarTexto();
+		setVisible(true);
 
 	}
-	
+	// arreglo de checkboxes
+
 	public void inicializarTexto() {
-		String [] nombre_atracciones = new String[] {};
+
+//		ArrayList<JCheckBox> checkboxes = new ArrayList<JCheckBox>();
+
 		for (int i = 0; i < control.lista_atracciones.size(); i++) {
-			String [] nombre_atracciones2 = { control.lista_atracciones.get(i).nombre };
-			nombre_atracciones = nombre_atracciones2;
+//			String [] nombres = { control.lista_atracciones.get(i).getNombre() };
+			JCheckBox checkbox = new JCheckBox(control.lista_atracciones.get(i).getNombre());
+			add(checkbox);
+			// checkboxes.add(checkbox);
+
 		}
-		check_box = new JCheckBox(control.lista_atracciones.get(0).getNombre());
+
+		campo_texto_atracciones = new JTextField();
+		campo_texto_atracciones.setBounds(10, 10, 690, 290);
+		add(campo_texto_atracciones);
+
+//		System.out.println(checkbox);
+
 	}
 
 	public void inicializarBarra() {
