@@ -14,6 +14,7 @@ import co.edu.unbosque.Model.Infantil;
 import co.edu.unbosque.Model.Pasaporte;
 import co.edu.unbosque.Model.Terror;
 import co.edu.unbosque.Model.Velocidad;
+import co.edu.unbosque.View.VentanaAtracciones;
 import co.edu.unbosque.View.VentanaCrearP;
 import co.edu.unbosque.View.VentanaPasaportes;
 import co.edu.unbosque.View.VentanaPrincipal;
@@ -34,6 +35,7 @@ public class Control implements ActionListener {
 
 	public VentanaPasaportes vnt_pasaporte;
 	public VentanaCrearP vnt_crear_p;
+	public VentanaAtracciones vnt_atracciones;
 
 	public Control() {
 
@@ -121,6 +123,7 @@ public class Control implements ActionListener {
 
 		vnt_principal.pnl_principal.boton_verTodos.addActionListener(this);
 		vnt_principal.pnl_principal.boton_crear.addActionListener(this);
+		vnt_principal.pnl_principal.ver_atrac.addActionListener(this);
 
 	}
 
@@ -155,6 +158,12 @@ public class Control implements ActionListener {
 		if (e.getActionCommand().equals("Regresar")) {
 			vnt_principal.setVisible(true);
 			vnt_pasaporte.setVisible(false);
+		}
+		
+		if(e.getActionCommand().equals("Ver atracciones")) {
+			vnt_principal.setVisible(false);
+			vnt_atracciones = new VentanaAtracciones(this);
+			
 		}
 
 	}
