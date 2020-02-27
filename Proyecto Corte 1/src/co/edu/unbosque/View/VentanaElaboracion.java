@@ -13,16 +13,14 @@ import javax.swing.table.TableColumnModel;
 
 import co.edu.unbosque.Controller.Control;
 
-public class VentanaPasaportes extends JFrame {
+public class VentanaElaboracion extends JFrame {
 
 	public Control control;
 	public JTable table;
 	public DefaultTableModel model;
-	public JButton boton_regresar;
-	public JButton boton_eliminar;
+	public JButton boton_atras;
 
-	//	Object[][] datos = { { nombres, cedula, edad, estatura, estado, categoria, numero_atracciones } };
-	public VentanaPasaportes(Control c) {
+	public VentanaElaboracion(Control c) {
 		control = c;
 		getContentPane().setLayout(new FlowLayout());
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -30,7 +28,6 @@ public class VentanaPasaportes extends JFrame {
 		setTitle("Lista de Pasaportes");
 		setResizable(false);
 		inicializarComponentes();
-		eliminarCasilla();
 
 		setLocationRelativeTo(null);
 		setVisible(true);
@@ -48,23 +45,25 @@ public class VentanaPasaportes extends JFrame {
 
 		for (int i = 0; i < control.lista_pasaportes.size(); i++) {
 
-			String nombres = control.lista_pasaportes.get(i).getNombre_dueño();
-			String cedula = control.lista_pasaportes.get(i).getCedula();
-			int edad = control.lista_pasaportes.get(i).getEdad();
-			int estatura = control.lista_pasaportes.get(i).getEstatura();
-			String estado = control.lista_pasaportes.get(i).getEstado_pasaporte();
-			String categoria = control.lista_pasaportes.get(i).getCategoria();
-			int numero_atracciones = control.lista_pasaportes.get(i).getNumero_atracciones();
+			if(control.lista_pasaportes.get(i).getEstado_pasaporte().equals("En Elaboracion")) {
+				
+				String nombres = control.lista_pasaportes.get(i).getNombre_dueño();
+				String cedula = control.lista_pasaportes.get(i).getCedula();
+				int edad = control.lista_pasaportes.get(i).getEdad();
+				int estatura = control.lista_pasaportes.get(i).getEstatura();
+				String estado = control.lista_pasaportes.get(i).getEstado_pasaporte();
+				String categoria = control.lista_pasaportes.get(i).getCategoria();
+				int numero_atracciones = control.lista_pasaportes.get(i).getNumero_atracciones();
 
-			Object[] datos = { nombres, cedula, edad, estatura, estado, categoria, numero_atracciones };
+				Object[] datos = { nombres, cedula, edad, estatura, estado, categoria, numero_atracciones };
 
-			model.addRow(datos);
+				model.addRow(datos);
+			}
+
 		}
 
 		DefaultTableCellRenderer Alinear = new DefaultTableCellRenderer();
 		Alinear.setHorizontalAlignment(SwingConstants.CENTER);
-
-
 
 		for (int i = 0; i < nombre_columnas.length; i++) {
 			table.getColumnModel().getColumn(i).setCellRenderer(Alinear);
@@ -80,29 +79,9 @@ public class VentanaPasaportes extends JFrame {
 		table.getColumnModel().getColumn(0).setWidth(100);
 		table.setVisible(true);
 
-		boton_eliminar = new JButton("Eliminar un Pasaporte");
-		boton_eliminar.setBounds(0, 510, 100, 100);
-		add(boton_eliminar);
+		boton_atras = new JButton("Volver");
+		boton_atras.setBounds(0, 510, 150, 100);
+		add(boton_atras);
 
-		boton_regresar = new JButton("Regresar");
-		boton_regresar.setBounds(0, 510, 150, 100);
-		add(boton_regresar);
-
-	}
-
-	public void eliminarCasilla() {
-
-		int a = table.getSelectedRow();
-
-		for (int i = 0; i < control.lista_pasaportes.size(); i++) {
-
-			if (a == i) {
-
-				model.removeRow(i);
-				control.lista_pasaportes.remove(i);
-
-			}
-
-		}
 	}
 }

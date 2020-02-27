@@ -16,8 +16,10 @@ import co.edu.unbosque.Model.Terror;
 import co.edu.unbosque.Model.Velocidad;
 import co.edu.unbosque.View.VentanaAtracciones;
 import co.edu.unbosque.View.VentanaCrearP;
+import co.edu.unbosque.View.VentanaElaboracion;
 import co.edu.unbosque.View.VentanaPasaportes;
 import co.edu.unbosque.View.VentanaPrincipal;
+import co.edu.unbosque.View.VentanaVendido;
 
 public class Control implements ActionListener {
 
@@ -36,14 +38,16 @@ public class Control implements ActionListener {
 	public VentanaPasaportes vnt_pasaporte;
 	public VentanaCrearP vnt_crear_p;
 	public VentanaAtracciones vnt_atracciones;
+	public VentanaVendido vnt_vendido;
+	public VentanaElaboracion vnt_elabracion;
 
 	public Control() {
 
 		vnt_principal = new VentanaPrincipal();
-		
+
 		//Inicializacion arraylist de atracciones
 		lista_atracciones = new ArrayList<Atraccion>();
-		
+
 		velocidad = new Velocidad("Terminator", "Velocidad", 12000, "La estatura mínima es 130 cm",
 				"No se requiere estatura máxima");
 		lista_atracciones.add(velocidad);
@@ -107,14 +111,12 @@ public class Control implements ActionListener {
 		acuatico = new Acuatico("La Anaconda", "Acuatico", 8000, "La estatura mínima es 130 cm",
 				"La estatura máxima es 190 cm");
 		lista_atracciones.add(acuatico);
-		
-		//vnt_pasaporte = new VentanaPasaportes(this);
 
 		//Inicializacion arraylist de pasaportes
 		lista_pasaportes = new ArrayList<Pasaporte>();
 
 		lista_pasaportes.add(0, new Pasaporte("John 'Johanna' Romo", "216651616", 5, 110, "Vendido", "Bronze", 5));
-		lista_pasaportes.add(1, new Pasaporte("Julian", "21563333", 24, 190, "en elaboracion", "Oro", 15));
+		lista_pasaportes.add(1, new Pasaporte("Julian", "21563333", 24, 190, "En Elaboracion", "Oro", 15));
 
 		//Imagen fondo
 		img = new ImageIcon("./Imagenes/powerslave.jpg");
@@ -124,6 +126,8 @@ public class Control implements ActionListener {
 		vnt_principal.pnl_principal.boton_verTodos.addActionListener(this);
 		vnt_principal.pnl_principal.boton_crear.addActionListener(this);
 		vnt_principal.pnl_principal.ver_atrac.addActionListener(this);
+		vnt_principal.pnl_principal.boton_vendidos.addActionListener(this);
+		vnt_principal.pnl_principal.boton_Elaboracion.addActionListener(this);
 
 	}
 
@@ -145,33 +149,80 @@ public class Control implements ActionListener {
 
 			// Estado pasaporte con un booleano y un if --> Si se crea con exito el
 			// pasaporte el estado pasa a completo.
-//			lista_pasaportes.add(new Pasaporte(vnt_crear_p.nombre.getText(), vnt_crear_p.cedula.getText(),
-//					vnt_crear_p.edad.getText(), vnt_crear_p.estatura.getText(), pEstado_Pasaporte, vnt_crear_p.p1.categoria.getSelectedItem(),
-//					pNumero_atracciones));
+			//			lista_pasaportes.add(new Pasaporte(vnt_crear_p.nombre.getText(), vnt_crear_p.cedula.getText(),
+			//					vnt_crear_p.edad.getText(), vnt_crear_p.estatura.getText(), pEstado_Pasaporte, vnt_crear_p.p1.categoria.getSelectedItem(),
+			//					pNumero_atracciones));
 
 		}
 
 		if (e.getActionCommand().equals("Validar")) {
 			vnt_crear_p.panel_checkbox.setVisible(true);
 		}
-		
+
 		if (e.getActionCommand().equals("Regresar")) {
 			vnt_principal.setVisible(true);
 			vnt_pasaporte.setVisible(false);
 		}
-		
+
 		if(e.getActionCommand().equals("Ver atracciones")) {
 			vnt_principal.setVisible(false);
 			vnt_atracciones = new VentanaAtracciones(this);
 			vnt_atracciones.boton_regresar.addActionListener(this);
-			
+
 		}
-		
+
 		if(e.getActionCommand().equals("Anterior")) {
 			vnt_atracciones.setVisible(false);
 			vnt_principal.setVisible(true);
 		}
+		
+		if(e.getActionCommand().equals("Pasaportes vendidos")) {
+			vnt_principal.setVisible(false);
+			vnt_vendido = new VentanaVendido(this);
+			vnt_vendido.boton_atras.addActionListener(this);
+		}
+		
+		if(e.getActionCommand().equals("Atras")) {
+			vnt_vendido.setVisible(false);
+			vnt_principal.setVisible(true);
+		}
+		
+		if(e.getActionCommand().equals("Pasaportes en elaboracion")) {
+			vnt_principal.setVisible(false);
+			vnt_elabracion = new VentanaElaboracion(this);
+			vnt_elabracion.boton_atras.addActionListener(this);
+		}
+		
+		if(e.getActionCommand().equals("Volver")) {
+			vnt_elabracion.setVisible(false);
+			vnt_principal.setVisible(true);
+		}
+		
+		if (e.getActionCommand().equals("Guardar")) {
 
+			String nombrea = vnt_crear_p.nombre.getText();
+			String cedulaa = vnt_crear_p.cedula.getText();
+			String edad = vnt_crear_p.edad.getText();
+			int a = Integer.parseInt(edad);
+			String estatura = vnt_crear_p.estatura.getText();
+
+			int b = Integer.parseInt(estatura);
+			if (vnt_crear_p.p1.categoria.getSelectedItem() == "Oro") {
+
+				lista_pasaportes.add(new Pasaporte(nombrea, cedulaa, a, b, "vendido", "Oro", 2));
+
+
+			}if (vnt_crear_p.p1.categoria.getSelectedItem() == "Bronce") {
+
+				lista_pasaportes.add(new Pasaporte(nombrea, cedulaa, a, b, "vendido", "Bronce", 2));
+
+
+			}if (vnt_crear_p.p1.categoria.getSelectedItem() == "Plata") {
+
+				lista_pasaportes.add(new Pasaporte(nombrea, cedulaa, a, b, "vendido", "	Plata", 2));
+
+			}
+		}
 	}
 
 }

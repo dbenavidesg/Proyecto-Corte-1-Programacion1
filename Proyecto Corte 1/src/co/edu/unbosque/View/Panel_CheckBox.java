@@ -22,6 +22,7 @@ public class Panel_CheckBox extends JPanel {
 	public JCheckBox checkbox_terror;
 	public JCheckBox checkbox_acuatico;
 	public JCheckBox checkbox_infantil;
+	public JCheckBox checkbox;
 	public JTable table;
 
 	public Control control;
@@ -41,6 +42,7 @@ public class Panel_CheckBox extends JPanel {
 
 	public void inicializarTexto() {
 
+		checkbox = new JCheckBox();
 		checkbox_velocidad = new JCheckBox();
 		checkbox_terror = new JCheckBox();
 		checkbox_acuatico = new JCheckBox();
@@ -81,35 +83,53 @@ public class Panel_CheckBox extends JPanel {
 
 		String[] nombre_columnas = { " ", "Velocidad", " ", "Terror", " ", "Acuático", " ", "Infantil" };
 
-		DefaultTableModel model = new DefaultTableModel(nombre_columnas, 0);
+		DefaultTableModel model = new DefaultTableModel() {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
+			public Class<?> getColumnClass(int column) {
+				
+				if(column % 2 == 0) {
+					return Boolean.class;
+				} else if(column % 2 == 1) {
+					return String.class;
+				}
+				return String.class;
+			}
+		};
+
 		table = new JTable(model);
 		table.setModel(model);
 
 		for (int i = 0; i < control.lista_atracciones.size(); i++) {
+			for (int j = 0; j < nombre_columnas.length; j++) {
+				if(model.getValueAt(i, j).getClass().equals(Boolean.class)) {
+					  checkbox.setSelected(Boolean.parseBoolean(model.getValueAt(i,j).toString()));
+				} else {
+					
+				}
+			}
 
-			//pares --> nombre de las atraccinoes
-//			if(i % 2 == 0) {
 
-				JCheckBox velocidad = checkbox_velocidad;
-				JCheckBox terror = checkbox_terror;
-				JCheckBox acuatico = checkbox_acuatico;
-				JCheckBox infantil = checkbox_infantil;
-
-				String[] datos = { velocidad.getText(), terror.getText(), acuatico.getText(), infantil.getText() };
-				model.addRow(datos);
-
-//			} else if(i % 2 == 1) {
-//				model.setValueAt(false, i, 0);
-//				
+//			if(model.getColumnClass(i) != null) {
+//				if(i % 2 == 0) {
+//
+//
+//
+//				} else if(i % 2 == 1) {
+//					String velocidad = checkbox_velocidad.getText();
+//					String terror = checkbox_terror.getText();
+//					String acuatico = checkbox_acuatico.getText();
+//					String infantil = checkbox_infantil.getText();
+//
+//					String [] datos = { velocidad, terror, acuatico, infantil };
+//					model.addRow(datos);
+//				}
 //			}
-				
-			      model = new DefaultTableModel(new Object[]{" "," ", " "}, 0) {
-			          @Override
-			          
-			          public Class getColumnClass(int columnIndex) {
-			             return Boolean.class;
-			          }
-			       };
+
+
 
 		}
 
