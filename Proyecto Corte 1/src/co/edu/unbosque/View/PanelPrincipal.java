@@ -22,7 +22,7 @@ public class PanelPrincipal extends JPanel {
 
 		boton_crear = new JButton("Crear pasaporte");
 		boton_crear.setBackground(Color.white);
-		boton_crear.setForeground(Color.red);
+		boton_crear.setForeground(Color.pink);
 		boton_crear.setBounds(15, 600, 150, 50);
 		add(boton_crear);
 
@@ -53,7 +53,7 @@ public class PanelPrincipal extends JPanel {
 		ver_atrac = new JButton("Ver atracciones");
 		ver_atrac.setBounds(900, 600, 150, 50);
 		ver_atrac.setBackground(Color.white);
-		ver_atrac.setForeground(Color.pink);
+		ver_atrac.setForeground(Color.black);
 		add(ver_atrac);
 
 		fondo = new JLabel();

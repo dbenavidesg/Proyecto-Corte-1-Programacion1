@@ -32,7 +32,7 @@ public class VentanaCrearP extends JFrame {
 		setTitle(".:CREAR PASAPORTE:.");
 		setSize(700, 800);
 		setResizable(false);
-		setBackground(Color.gray);
+		setBackground(Color.pink);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		inicializar();
@@ -43,7 +43,7 @@ public class VentanaCrearP extends JFrame {
 		
 		Tit = new JLabel(".:CREAR NUEVO PASAPORTE:.");
 		Tit.setBounds(200, 20, 300, 50);
-		Tit.setForeground(Color.red);
+		Tit.setForeground(Color.black);
 		Tit.setFont(new Font("Arial", Font.BOLD, 18));
 		add(Tit);
 
@@ -86,7 +86,7 @@ public class VentanaCrearP extends JFrame {
 		setVisible(false);
 		
 		panel_checkbox = new Panel_CheckBox();
-		panel_checkbox.setBounds(20, 500, 700, 150);
+		panel_checkbox.setBounds(20, 350, 700, 350);
 		panel_checkbox.setVisible(false);
 		add(panel_checkbox);
 

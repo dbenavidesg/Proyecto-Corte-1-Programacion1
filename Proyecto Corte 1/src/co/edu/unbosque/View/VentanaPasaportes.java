@@ -9,6 +9,7 @@ import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
 
 import co.edu.unbosque.Controller.Control;
 
@@ -61,12 +62,14 @@ public class VentanaPasaportes extends JFrame {
 
 		DefaultTableCellRenderer Alinear = new DefaultTableCellRenderer();
 		Alinear.setHorizontalAlignment(SwingConstants.CENTER);
+		
+
 
 		for (int i = 0; i < nombre_columnas.length; i++) {
 			table.getColumnModel().getColumn(i).setCellRenderer(Alinear);
-//			TableColumnModel column_model = new Table
-			table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-			table.getColumnModel().getColumn(0).setWidth(100);
+			TableColumnModel columnModel = table.getColumnModel();
+			columnModel.getColumn(i).setPreferredWidth(200);
+
 		}
 
 		JScrollPane scroll = new JScrollPane(table);

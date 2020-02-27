@@ -163,7 +163,13 @@ public class Control implements ActionListener {
 		if(e.getActionCommand().equals("Ver atracciones")) {
 			vnt_principal.setVisible(false);
 			vnt_atracciones = new VentanaAtracciones(this);
+			vnt_atracciones.boton_regresar.addActionListener(this);
 			
+		}
+		
+		if(e.getActionCommand().equals("Anterior")) {
+			vnt_atracciones.setVisible(false);
+			vnt_principal.setVisible(true);
 		}
 
 	}

@@ -1,22 +1,19 @@
 package co.edu.unbosque.View;
 
-import java.awt.Checkbox;
 import java.awt.Color;
 import java.awt.FlowLayout;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 import co.edu.unbosque.Controller.Control;
-import co.edu.unbosque.Model.Velocidad;
 
 public class Panel_CheckBox extends JPanel {
 
@@ -36,7 +33,7 @@ public class Panel_CheckBox extends JPanel {
 		control = new Control();
 		inicializarBarra();
 		inicializarTexto();
-		inicializarBarra();
+		inicializarTabla();
 		setVisible(true);
 
 	}
@@ -44,24 +41,36 @@ public class Panel_CheckBox extends JPanel {
 
 	public void inicializarTexto() {
 
+		checkbox_velocidad = new JCheckBox();
+		checkbox_terror = new JCheckBox();
+		checkbox_acuatico = new JCheckBox();
+		checkbox_infantil = new JCheckBox();
+
 		for (int i = 0; i < control.lista_atracciones.size(); i++) {
-			
+
 			if (control.lista_atracciones.get(i).tipo_atracciones.equals("Velocidad")) {
 				JCheckBox checkbox_velocidad = new JCheckBox(control.lista_atracciones.get(i).getNombre());
 				add(checkbox_velocidad);
-				
-			} else if (control.lista_atracciones.get(i).tipo_atracciones.equals("Terror")) {
+				checkbox_velocidad.setVisible(false);
+
+			} 
+			if (control.lista_atracciones.get(i).tipo_atracciones.equals("Terror")) {
 				JCheckBox checkbox_terror = new JCheckBox(control.lista_atracciones.get(i).getNombre());
 				add(checkbox_terror);
-				
-			} else if (control.lista_atracciones.get(i).tipo_atracciones.equals("Acuatico")) {
+				checkbox_terror.setVisible(false);
+
+			}
+			if (control.lista_atracciones.get(i).tipo_atracciones.equals("Acuatico")) {
 				JCheckBox checkbox_acuatico = new JCheckBox(control.lista_atracciones.get(i).getNombre());
 				add(checkbox_acuatico);
-				
-			} else if (control.lista_atracciones.get(i).tipo_atracciones.equals("Infantil")) {
+				checkbox_acuatico.setVisible(false);
+
+			}
+			if (control.lista_atracciones.get(i).tipo_atracciones.equals("Infantil")) {
 				JCheckBox checkbox_infantil = new JCheckBox(control.lista_atracciones.get(i).getNombre());
 				add(checkbox_infantil);
-				
+				checkbox_infantil.setVisible(false);
+
 			}
 
 		}
@@ -70,7 +79,7 @@ public class Panel_CheckBox extends JPanel {
 
 	public void inicializarTabla() {
 
-		String[] nombre_columnas = { "Velocidad", "Terror", "Acuático", "Infantil" };
+		String[] nombre_columnas = { " ", "Velocidad", " ", "Terror", " ", "Acuático", " ", "Infantil" };
 
 		DefaultTableModel model = new DefaultTableModel(nombre_columnas, 0);
 		table = new JTable(model);
@@ -78,14 +87,30 @@ public class Panel_CheckBox extends JPanel {
 
 		for (int i = 0; i < control.lista_atracciones.size(); i++) {
 
-			String velocidad = checkbox_velocidad.getText();
-			String terror = checkbox_terror.getText();
-			String acuatico = checkbox_acuatico.getText();
-			String infantil = checkbox_infantil.getText();
+			//pares --> nombre de las atraccinoes
+//			if(i % 2 == 0) {
 
-			Object[] datos = { velocidad, terror, acuatico, infantil };
+				JCheckBox velocidad = checkbox_velocidad;
+				JCheckBox terror = checkbox_terror;
+				JCheckBox acuatico = checkbox_acuatico;
+				JCheckBox infantil = checkbox_infantil;
 
-			model.addRow(datos);
+				String[] datos = { velocidad.getText(), terror.getText(), acuatico.getText(), infantil.getText() };
+				model.addRow(datos);
+
+//			} else if(i % 2 == 1) {
+//				model.setValueAt(false, i, 0);
+//				
+//			}
+				
+			      model = new DefaultTableModel(new Object[]{" "," ", " "}, 0) {
+			          @Override
+			          
+			          public Class getColumnClass(int columnIndex) {
+			             return Boolean.class;
+			          }
+			       };
+
 		}
 
 		DefaultTableCellRenderer Alinear = new DefaultTableCellRenderer();
@@ -94,12 +119,12 @@ public class Panel_CheckBox extends JPanel {
 		for (int i = 0; i < nombre_columnas.length; i++) {
 			table.getColumnModel().getColumn(i).setCellRenderer(Alinear);
 			table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-			table.getColumnModel().getColumn(0).setWidth(100);
+			table.getColumnModel().getColumn(i).setWidth(200);
 		}
 
 		JScrollPane scroll = new JScrollPane(table);
 		add(scroll);
-		table.setBounds(20, 20, 680, 650);
+		table.setBounds(20, 20, 700, 650);
 		table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		table.getColumnModel().getColumn(0).setWidth(100);
 		table.setVisible(true);
@@ -107,7 +132,7 @@ public class Panel_CheckBox extends JPanel {
 
 	public void inicializarBarra() {
 		barraDesplazamiento = new JScrollPane(table);
-		barraDesplazamiento.setBounds(5, 5, 695, 295);
+		barraDesplazamiento.setBounds(5, 5, 700, 330);
 		add(barraDesplazamiento);
 	}
 }

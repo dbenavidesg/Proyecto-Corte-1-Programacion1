@@ -16,7 +16,7 @@ public class Panel_categoria extends JPanel {
 	public Panel_categoria() {
 
 		setLayout(null);
-		setBackground(Color.gray);
+		setBackground(Color.pink);
 		setBounds(0, 180, 650, 300);
 		setVisible(true);
 		inicializar();
