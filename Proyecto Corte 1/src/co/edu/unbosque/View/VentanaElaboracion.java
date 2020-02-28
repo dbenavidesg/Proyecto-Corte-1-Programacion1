@@ -20,7 +20,16 @@ public class VentanaElaboracion extends JFrame {
 	public DefaultTableModel model;
 	public JButton boton_atras;
 
+	/**
+	 * Este es el constructor de la clase VentanaElaboracion al que se le asigna la
+	 * inicialización. <b>post</b>Se debe crear la ventana<br>
+	 * 
+	 * @param c Este parametro es utilizado para llamar a la clase control y c !=
+	 *          null, c != " ".
+	 */
+
 	public VentanaElaboracion(Control c) {
+
 		control = c;
 		getContentPane().setLayout(new FlowLayout());
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -34,10 +43,16 @@ public class VentanaElaboracion extends JFrame {
 
 	}
 
+	/**
+	 * Este metodo crea la tabla, la barra de dezplasamiento y un boton <b>pre</b>
+	 * Se debe de crear con anterioridad la lista con los pasaportes. <br>
+	 * <b>post</b> Se deben crear las caracteristicas dadas en el metodo.<br>
+	 */
+
 	public void inicializarComponentes() {
 
 		String[] nombre_columnas = { "Nombre Dueño", "Cédula", "Edad", "Estatura", "Estado Pasaporte", "Categoria",
-		"Número de Atracciones" };
+				"Número de Atracciones" };
 
 		DefaultTableModel model = new DefaultTableModel(nombre_columnas, 0);
 		table = new JTable(model);
@@ -45,8 +60,8 @@ public class VentanaElaboracion extends JFrame {
 
 		for (int i = 0; i < control.lista_pasaportes.size(); i++) {
 
-			if(control.lista_pasaportes.get(i).getEstado_pasaporte().equals("En Elaboracion")) {
-				
+			if (control.lista_pasaportes.get(i).getEstado_pasaporte().equals("En Elaboracion")) {
+
 				String nombres = control.lista_pasaportes.get(i).getNombre_dueño();
 				String cedula = control.lista_pasaportes.get(i).getCedula();
 				int edad = control.lista_pasaportes.get(i).getEdad();

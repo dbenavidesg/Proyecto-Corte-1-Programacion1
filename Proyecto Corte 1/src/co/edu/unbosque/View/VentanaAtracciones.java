@@ -22,8 +22,16 @@ public class VentanaAtracciones extends JFrame {
 	public JButton boton_eliminar;
 	public JButton boton_agregar;
 
+	/**
+	 * Este es el constructor de la clase VentanaPasaportes al cual se le asigna la
+	 * inicialización. <b>post</b> Se debe generar la ventana propuesta<br>
+	 * 
+	 * @param c Este parametro es utilizado para llamar a la clase control y c !=
+	 *          null, c != " ".
+	 */
+
 	public VentanaAtracciones(Control c) {
-		
+
 		control = c;
 		getContentPane().setLayout(new FlowLayout());
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -35,6 +43,13 @@ public class VentanaAtracciones extends JFrame {
 		setVisible(true);
 
 	}
+
+	/**
+	 * Este metodo crea la tabla y cada uno de los componentes de la clase
+	 * <b>pre</b> Se debe de crear con anterioridad la lista con las pasaportes.
+	 * <br>
+	 * <b>post</b>Se deben crear las caracteriticas dadas en el metodo <br>
+	 */
 
 	public void inicializarComponentes() {
 
@@ -51,32 +66,32 @@ public class VentanaAtracciones extends JFrame {
 			String nombre = control.lista_atracciones.get(i).getNombre();
 			String tipo = control.lista_atracciones.get(i).getTipo_atracciones();
 			int precio = (int) control.lista_atracciones.get(i).getPrecio();
-			
-			if(control.lista_atracciones.get(i).tipo_atracciones.equals("Velocidad")) {
+
+			if (control.lista_atracciones.get(i).tipo_atracciones.equals("Velocidad")) {
 				est_min = control.velocidad.estatura_minima;
 				est_max = control.velocidad.estatura_maxima;
-				
-			} else if(control.lista_atracciones.get(i).tipo_atracciones.equals("Acuatico")) {
+
+			} else if (control.lista_atracciones.get(i).tipo_atracciones.equals("Acuatico")) {
 				est_min = control.acuatico.estatura_minima;
 				est_max = control.acuatico.estatura_maxima;
-				
-			} else if(control.lista_atracciones.get(i).tipo_atracciones.equals("Terror")) {
+
+			} else if (control.lista_atracciones.get(i).tipo_atracciones.equals("Terror")) {
 				est_min = control.terror.estatura_minima;
 				est_max = control.terror.estatura_maxima;
-				
-			} else if(control.lista_atracciones.get(i).tipo_atracciones.equals("Infantil")) {
+
+			} else if (control.lista_atracciones.get(i).tipo_atracciones.equals("Infantil")) {
 				est_min = control.infantil.estatura_minima;
 				est_max = control.infantil.estatura_maxima;
-				
+
 			}
-			
+
 			Object[] datos = { nombre, tipo, precio, est_min, est_max };
 			model.addRow(datos);
 		}
 
 		DefaultTableCellRenderer Alinear = new DefaultTableCellRenderer();
 		Alinear.setHorizontalAlignment(SwingConstants.CENTER);
-		
+
 		TableColumnModel columnModel = table.getColumnModel();
 		columnModel.getColumn(0).setPreferredWidth(200);
 		columnModel.getColumn(2).setPreferredWidth(150);
@@ -90,24 +105,24 @@ public class VentanaAtracciones extends JFrame {
 		JScrollPane scroll = new JScrollPane(table);
 		scroll.setBackground(Color.white);
 		getContentPane().add(scroll);
-		
+
 		table.setBounds(20, 20, 680, 650);
 		table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		table.getColumnModel().getColumn(0).setWidth(100);
 		table.setVisible(true);
-		
+
 		boton_eliminar = new JButton("Eliminar una Atraccion");
 		boton_eliminar.setBounds(0, 510, 100, 100);
 		boton_eliminar.setBackground(Color.white);
 		boton_eliminar.setForeground(Color.black);
 		add(boton_eliminar);
-		
+
 		boton_agregar = new JButton("Agregar una Atraccion");
 		boton_agregar.setBounds(0, 510, 100, 100);
 		boton_agregar.setBackground(Color.white);
 		boton_agregar.setForeground(Color.black);
 		add(boton_agregar);
-		
+
 		boton_regresar = new JButton("Anterior");
 		boton_regresar.setBounds(0, 510, 150, 100);
 		boton_regresar.setBackground(Color.white);

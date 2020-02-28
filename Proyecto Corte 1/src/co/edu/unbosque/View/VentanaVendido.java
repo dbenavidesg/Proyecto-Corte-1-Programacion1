@@ -14,10 +14,20 @@ import javax.swing.table.TableColumnModel;
 import co.edu.unbosque.Controller.Control;
 
 public class VentanaVendido extends JFrame {
+
 	public Control control;
 	public JTable table;
 	public DefaultTableModel model;
 	public JButton boton_atras;
+
+	/**
+	 * Este es el constructor de la clase VentanaVendido al cual se le asigna la
+	 * inicialización. <b>post</b> Se debe crear cada uno de los objetos o
+	 * caracteristicas dadas en el constructor<br>
+	 * 
+	 * @param c Este parametro es utilizado para llamar a la clase control y c !=
+	 *          null, c != " ".
+	 */
 
 	public VentanaVendido(Control c) {
 		control = c;
@@ -33,10 +43,16 @@ public class VentanaVendido extends JFrame {
 
 	}
 
+	/**
+	 * Este metodo crea la tabla, la barra de dezplasamiento y un boton <b>pre</b>
+	 * Se debe de crear con anterioridad la lista con las atracciones. <br>
+	 * <b>post</b> Se deben crear las caracteristicas dadas en el metodo.<br>
+	 */
+
 	public void inicializarComponentes() {
 
 		String[] nombre_columnas = { "Nombre Dueño", "Cédula", "Edad", "Estatura", "Estado Pasaporte", "Categoria",
-		"Número de Atracciones" };
+				"Número de Atracciones" };
 
 		DefaultTableModel model = new DefaultTableModel(nombre_columnas, 0);
 		table = new JTable(model);
@@ -44,7 +60,7 @@ public class VentanaVendido extends JFrame {
 
 		for (int i = 0; i < control.lista_pasaportes.size(); i++) {
 
-			if(control.lista_pasaportes.get(i).getEstado_pasaporte().equals("Vendido")) {
+			if (control.lista_pasaportes.get(i).getEstado_pasaporte().equals("Vendido")) {
 				String nombres = control.lista_pasaportes.get(i).getNombre_dueño();
 				String cedula = control.lista_pasaportes.get(i).getCedula();
 				int edad = control.lista_pasaportes.get(i).getEdad();

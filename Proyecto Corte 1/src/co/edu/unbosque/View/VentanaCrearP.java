@@ -26,11 +26,18 @@ public class VentanaCrearP extends JFrame {
 	public Panel_categoria p1;
 	public Panel_CheckBox panel_checkbox;
 
+	/**
+	 * El método constructor es aquel método al que se le asigna la inicialización
+	 * de las variables y objetos. Además, se añaden las características de este
+	 * JFrame. <b>post</b> Se debe crear cada uno de los objetos o caracteristicas
+	 * dadas en el constructor<br>
+	 */
+
 	public VentanaCrearP() {
 
 		getContentPane().setLayout(null);
 		setTitle(".:CREAR PASAPORTE:.");
-		setSize(700, 800);
+		setSize(700, 550);
 		setResizable(false);
 		setBackground(Color.pink);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -39,8 +46,13 @@ public class VentanaCrearP extends JFrame {
 		setVisible(true);
 	}
 
+	/**
+	 * A este método le corresponde la inicialización de los atributos descritos con
+	 * anterioridad.
+	 */
+
 	public void inicializar() {
-		
+
 		Tit = new JLabel(".:CREAR NUEVO PASAPORTE:.");
 		Tit.setBounds(200, 20, 300, 50);
 		Tit.setForeground(Color.black);
@@ -84,12 +96,11 @@ public class VentanaCrearP extends JFrame {
 		getContentPane().add(p1);
 		setLocationRelativeTo(null);
 		setVisible(false);
-		
+
 		panel_checkbox = new Panel_CheckBox();
-		panel_checkbox.setBounds(20, 350, 700, 350);
+		panel_checkbox.setBounds(20, 350, 670, 150);
 		panel_checkbox.setVisible(false);
 		add(panel_checkbox);
-
 
 	}
 }

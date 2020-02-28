@@ -21,7 +21,14 @@ public class VentanaPasaportes extends JFrame {
 	public JButton boton_regresar;
 	public JButton boton_eliminar;
 
-	//	Object[][] datos = { { nombres, cedula, edad, estatura, estado, categoria, numero_atracciones } };
+	/**
+	 * Este es el constructor de la clase VentanaPasaportes al cual se le asigna la
+	 * inicialización. <b>post</b> Se debe generar la ventana propuesta<br>
+	 * 
+	 * @param c Este parametro es utilizado para llamar a la clase control y c !=
+	 *          null, c != " ".
+	 */
+
 	public VentanaPasaportes(Control c) {
 		control = c;
 		getContentPane().setLayout(new FlowLayout());
@@ -37,10 +44,17 @@ public class VentanaPasaportes extends JFrame {
 
 	}
 
+	/**
+	 * Este metodo crea la tabla y cada uno de los componentes de la clase
+	 * <b>pre</b> Se debe de crear con anterioridad la lista con las pasaportes.
+	 * <br>
+	 * <b>post</b>Se deben crear las caracteriticas dadas en el metodo <br>
+	 */
+
 	public void inicializarComponentes() {
 
 		String[] nombre_columnas = { "Nombre Dueño", "Cédula", "Edad", "Estatura", "Estado Pasaporte", "Categoria",
-		"Número de Atracciones" };
+				"Número de Atracciones" };
 
 		DefaultTableModel model = new DefaultTableModel(nombre_columnas, 0);
 		table = new JTable(model);
@@ -63,8 +77,6 @@ public class VentanaPasaportes extends JFrame {
 
 		DefaultTableCellRenderer Alinear = new DefaultTableCellRenderer();
 		Alinear.setHorizontalAlignment(SwingConstants.CENTER);
-
-
 
 		for (int i = 0; i < nombre_columnas.length; i++) {
 			table.getColumnModel().getColumn(i).setCellRenderer(Alinear);
@@ -89,6 +101,14 @@ public class VentanaPasaportes extends JFrame {
 		add(boton_regresar);
 
 	}
+
+	/**
+	 * El métod eliminarCasilla hace referencia a la eliminacion de un elemento de
+	 * la lista de los pasaportes. <b>pre</b> Se debe de crear con anterioridad la
+	 * lista de pasaportes. <br>
+	 * <b>post</b> Se elimina un elemento de la lista, por ende de la tabla, con
+	 * todas sus características. <br>
+	 */
 
 	public void eliminarCasilla() {
 

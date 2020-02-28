@@ -16,6 +16,13 @@ public class PanelPrincipal extends JPanel {
 	public JButton boton_recaudo;
 	public JButton ver_atrac;
 
+	/**
+	 * El método constructor es aquel método al que se le asigna la inicialización
+	 * de las variables y objetos. Además, se añaden las características de este
+	 * JPanel. <b>post</b> Se debe crear cada uno de los objetos o caracteristicas
+	 * dadas en el constructor<br>
+	 */
+
 	public PanelPrincipal() {
 
 		setLayout(null);

@@ -6,12 +6,42 @@ public class Terror extends Atraccion {
 	public String estatura_minima;
 	public String estatura_maxima;
 
-	public Terror(String pNombre, String pTipo_atracciones, double pPrecio, String pEstatura_Minima, String pEstatura_Maxima) {
+	/**
+	 * Este método generara los datos de la atracción terror con sus restricciones y
+	 * <b>pre</b> la lista atracciones debe estar inicializada (no es null). <br>
+	 * <b>post</b> se crea una atracción terror con los datos dados.<br>
+	 * 
+	 * @param pNombre          es el nombre de la atraccion pNombre != null,
+	 *                         pNombre!= “ “
+	 * @param pTipo_atraccion  indica el tipo de atracción que es pTipo_atraccion !=
+	 *                         null, pTipo_atraccion != “ “
+	 * @param pPrecio          es el precio que tendrán este tipo de atraccion
+	 *                         pPrecio != null, pPrecio != “ “
+	 * @param pEstatura_Minima es la estatura minima que tendran este tipo de
+	 *                         atracciones pEstatura_Minima !=, pEstatura_Minimia !=
+	 *                         “ “
+	 * @param pEstatura_Maxima es la estatura maxima que tendran este tipo de
+	 *                         atracciones pEstatura_Maxima !=, pEstatura_Maxima !=
+	 *                         “ “
+	 */
+
+	public Terror(String pNombre, String pTipo_atracciones, double pPrecio, String pEstatura_Minima,
+			String pEstatura_Maxima) {
 
 		super(pNombre, pTipo_atracciones, pPrecio);
 		estatura_maxima = pEstatura_Maxima;
 		estatura_minima = pEstatura_Minima;
 	}
+
+	/**
+	 * Este método calculara el precio que tendrá este tipo de atracción con los
+	 * respectivo beneficios de cata categoría. <b>post</b> da el precio de las
+	 * atracciones según la categoria del pasaporte.<br>
+	 * 
+	 * @param precio es el precio que tendrá la atracción según la categoria !=
+	 *               null, precio!= “ “
+	 * @return
+	 */
 
 	@Override
 	public double calcularPrecio() {

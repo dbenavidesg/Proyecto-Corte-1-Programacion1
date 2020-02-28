@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 import co.edu.unbosque.Model.Acuatico;
 import co.edu.unbosque.Model.Atraccion;
@@ -19,6 +20,7 @@ import co.edu.unbosque.View.VentanaCrearP;
 import co.edu.unbosque.View.VentanaElaboracion;
 import co.edu.unbosque.View.VentanaPasaportes;
 import co.edu.unbosque.View.VentanaPrincipal;
+import co.edu.unbosque.View.VentanaRecaudo;
 import co.edu.unbosque.View.VentanaVendido;
 
 public class Control implements ActionListener {
@@ -40,12 +42,30 @@ public class Control implements ActionListener {
 	public VentanaAtracciones vnt_atracciones;
 	public VentanaVendido vnt_vendido;
 	public VentanaElaboracion vnt_elabracion;
+	public VentanaRecaudo vnt_recaudo;
+
+	public int contador;
+
+	/**
+	 * Este es el constructor de la clase Control el cual se le asigna la
+	 * inicialización de los atributos y objectos. De esta manera el objecto es
+	 * creado con un valorinicial. Este método se llama automaticamente cuando se
+	 * crea el objeto.<b>post</b> Se debe generar la ventana propuesta, creación de
+	 * los arraylist y los action listeners<br>
+	 */
 
 	public Control() {
 
 		vnt_principal = new VentanaPrincipal();
 
-		//Inicializacion arraylist de atracciones
+		vnt_principal.pnl_principal.boton_verTodos.addActionListener(this);
+		vnt_principal.pnl_principal.boton_crear.addActionListener(this);
+		vnt_principal.pnl_principal.ver_atrac.addActionListener(this);
+		vnt_principal.pnl_principal.boton_vendidos.addActionListener(this);
+		vnt_principal.pnl_principal.boton_Elaboracion.addActionListener(this);
+		vnt_principal.pnl_principal.boton_recaudo.addActionListener(this);
+
+		// Inicializacion arraylist de atracciones
 		lista_atracciones = new ArrayList<Atraccion>();
 
 		velocidad = new Velocidad("Terminator", "Velocidad", 12000, "La estatura mínima es 130 cm",
@@ -66,8 +86,8 @@ public class Control implements ActionListener {
 		velocidad = new Velocidad("Brain Crush", "Velocidad", 12000, "La estatura mínima es 130 cm",
 				"No se requiere estatura máxima");
 		lista_atracciones.add(velocidad);
-		velocidad = new Velocidad("El Revoltoso", "Velocidad", 12000,
-				"La estatura mínima es 130 cm", "No se requiere estatura máxima");
+		velocidad = new Velocidad("El Revoltoso", "Velocidad", 12000, "La estatura mínima es 130 cm",
+				"No se requiere estatura máxima");
 		lista_atracciones.add(velocidad);
 
 		infantil = new Infantil("La Casa de Dulces", "Infantil", 5000, "No se requiere estatura mínima",
@@ -112,24 +132,30 @@ public class Control implements ActionListener {
 				"La estatura máxima es 190 cm");
 		lista_atracciones.add(acuatico);
 
-		//Inicializacion arraylist de pasaportes
+		// Inicializacion arraylist de pasaportes
 		lista_pasaportes = new ArrayList<Pasaporte>();
 
 		lista_pasaportes.add(0, new Pasaporte("John 'Johanna' Romo", "216651616", 5, 110, "Vendido", "Bronze", 5));
 		lista_pasaportes.add(1, new Pasaporte("Julian", "21563333", 24, 190, "En Elaboracion", "Oro", 15));
 
-		//Imagen fondo
+		// Imagen fondo
 		img = new ImageIcon("./Imagenes/powerslave.jpg");
 		icono = new ImageIcon(img.getImage().getScaledInstance(1100, 750, Image.SCALE_DEFAULT));
 		vnt_principal.pnl_principal.fondo.setIcon(icono);
 
-		vnt_principal.pnl_principal.boton_verTodos.addActionListener(this);
-		vnt_principal.pnl_principal.boton_crear.addActionListener(this);
-		vnt_principal.pnl_principal.ver_atrac.addActionListener(this);
-		vnt_principal.pnl_principal.boton_vendidos.addActionListener(this);
-		vnt_principal.pnl_principal.boton_Elaboracion.addActionListener(this);
-
 	}
+
+	/**
+	 * El método es invocado cuando ocurre una acción. <b>pre</b> Se
+	 * debierondeterminar los objetos que implementan el ActionListener. <br>
+	 * <b>post</b> Un objeto que implementa el ActionListener adquiere eldeterminado
+	 * ActionEvent cuando ocurra el evento. <br>
+	 * 
+	 * @param e e - Re presenta un evento generado por un componente, que en su
+	 *          mayoríason botones. El evento pasa por todos los objetos que tienen
+	 *          comoregistrado un ActionListener, y así poder obtener un evento
+	 *          ygenerarlo. e != null, e != " ".
+	 */
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -142,21 +168,32 @@ public class Control implements ActionListener {
 		}
 
 		if (e.getActionCommand().equals("Crear pasaporte")) {
-			vnt_crear_p = new VentanaCrearP();
 			vnt_principal.setVisible(false);
-			vnt_principal.pnl_principal.setVisible(false);
+			vnt_crear_p = new VentanaCrearP();
 			vnt_crear_p.p1.validar2.addActionListener(this);
-
-			// Estado pasaporte con un booleano y un if --> Si se crea con exito el
-			// pasaporte el estado pasa a completo.
-			//			lista_pasaportes.add(new Pasaporte(vnt_crear_p.nombre.getText(), vnt_crear_p.cedula.getText(),
-			//					vnt_crear_p.edad.getText(), vnt_crear_p.estatura.getText(), pEstado_Pasaporte, vnt_crear_p.p1.categoria.getSelectedItem(),
-			//					pNumero_atracciones));
 
 		}
 
 		if (e.getActionCommand().equals("Validar")) {
-			vnt_crear_p.panel_checkbox.setVisible(true);
+
+			if (vnt_crear_p.nombre.getText() == "" || vnt_crear_p.edad.getText() == null
+					|| vnt_crear_p.estatura.getText() == null || vnt_crear_p.cedula.getText() == null) {
+				JOptionPane.showMessageDialog(null, "Advertencia",
+						"Señor Usuario por favor ingresar toda la información en los campos de texto",
+						JOptionPane.WARNING_MESSAGE);
+
+			} else {
+				vnt_crear_p.panel_checkbox.setVisible(true);
+
+				for (int i = 0; i < lista_atracciones.size(); i++) {
+
+					if (vnt_crear_p.panel_checkbox.checkbox_velocidad.isSelected()) {
+						contador++;
+					}
+					System.out.println(contador);
+					// vnt_crear_p.panel_checkbox.checkbox_velocidad.getSelectedIcon();
+				}
+			}
 		}
 
 		if (e.getActionCommand().equals("Regresar")) {
@@ -164,40 +201,40 @@ public class Control implements ActionListener {
 			vnt_pasaporte.setVisible(false);
 		}
 
-		if(e.getActionCommand().equals("Ver atracciones")) {
+		if (e.getActionCommand().equals("Ver atracciones")) {
 			vnt_principal.setVisible(false);
 			vnt_atracciones = new VentanaAtracciones(this);
 			vnt_atracciones.boton_regresar.addActionListener(this);
 
 		}
 
-		if(e.getActionCommand().equals("Anterior")) {
+		if (e.getActionCommand().equals("Anterior")) {
 			vnt_atracciones.setVisible(false);
 			vnt_principal.setVisible(true);
 		}
-		
-		if(e.getActionCommand().equals("Pasaportes vendidos")) {
+
+		if (e.getActionCommand().equals("Pasaportes vendidos")) {
 			vnt_principal.setVisible(false);
 			vnt_vendido = new VentanaVendido(this);
 			vnt_vendido.boton_atras.addActionListener(this);
 		}
-		
-		if(e.getActionCommand().equals("Atras")) {
+
+		if (e.getActionCommand().equals("Atras")) {
 			vnt_vendido.setVisible(false);
 			vnt_principal.setVisible(true);
 		}
-		
-		if(e.getActionCommand().equals("Pasaportes en elaboracion")) {
+
+		if (e.getActionCommand().equals("Pasaportes en elaboracion")) {
 			vnt_principal.setVisible(false);
 			vnt_elabracion = new VentanaElaboracion(this);
 			vnt_elabracion.boton_atras.addActionListener(this);
 		}
-		
-		if(e.getActionCommand().equals("Volver")) {
+
+		if (e.getActionCommand().equals("Volver")) {
 			vnt_elabracion.setVisible(false);
 			vnt_principal.setVisible(true);
 		}
-		
+
 		if (e.getActionCommand().equals("Guardar")) {
 
 			String nombrea = vnt_crear_p.nombre.getText();
@@ -211,17 +248,22 @@ public class Control implements ActionListener {
 
 				lista_pasaportes.add(new Pasaporte(nombrea, cedulaa, a, b, "vendido", "Oro", 2));
 
-
-			}if (vnt_crear_p.p1.categoria.getSelectedItem() == "Bronce") {
+			}
+			if (vnt_crear_p.p1.categoria.getSelectedItem() == "Bronce") {
 
 				lista_pasaportes.add(new Pasaporte(nombrea, cedulaa, a, b, "vendido", "Bronce", 2));
 
-
-			}if (vnt_crear_p.p1.categoria.getSelectedItem() == "Plata") {
+			}
+			if (vnt_crear_p.p1.categoria.getSelectedItem() == "Plata") {
 
 				lista_pasaportes.add(new Pasaporte(nombrea, cedulaa, a, b, "vendido", "	Plata", 2));
 
 			}
+		}
+
+		if (e.getActionCommand().equals("Recaudo pasportes")) {
+			vnt_principal.setVisible(false);
+			vnt_recaudo = new VentanaRecaudo();
 		}
 	}
 

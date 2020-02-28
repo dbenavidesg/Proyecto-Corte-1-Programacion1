@@ -9,7 +9,29 @@ public class Pasaporte {
 	public String estado_pasaporte;
 	public String categoria;
 	public int numero_atracciones;
-	
+
+	/**
+	 * Este método crea el pasaporte <b>pre</b> la lista pasaporte debe estar
+	 * inicializada (no es null). <br>
+	 * <b>post</b> se crea el pasaporte con sus respectivas características.<br>
+	 * 
+	 * @param pNombre             es el nombre de la persona que hace el pasaporte
+	 *                            pNombre _dueño¡= null, pNombre_dueño ¡= “ “
+	 * @param pCedula             es la de la persona que hace el pasaporte pCedula
+	 *                            != null, pCedula != “ “
+	 * @param pEdad               es la edad de la persona que hace el pasaporte
+	 *                            pEdad != null, pEdad != “ “
+	 * @param pEstatura           es la estatura de la persona que hace el pasaporte
+	 *                            pEstatura != null, pEstatura != “ “
+	 * @param pEstado_pasaporte   es el estado que tendre el pasaporte (vendido o en
+	 *                            elaboración) pEstado_pasaporte != null,
+	 *                            pEStado_pasaporte != “ “
+	 * @param pCategoria          es la categoría que tendrá el pasaporte(oro,plata
+	 *                            o bronze) pCategoria != null, pCategoria != “ “
+	 * @param pNumero_atracciones son la cantidad de atracciones que tendrá el
+	 *                            pasaporte pNumero_atracciones != null,
+	 *                            pNumero_atracciones != “ “
+	 */
 
 	public Pasaporte(String pNombre_dueño, String pCedula, int pEdad, int pEstatura, String pEstado_Pasaporte,
 			String pCategoria, int pNumero_atracciones) {

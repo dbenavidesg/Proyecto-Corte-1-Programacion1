@@ -11,6 +11,12 @@ public class VentanaPrincipal extends JFrame {
 	public JLabel Titulo;
 	public PanelPrincipal pnl_principal;
 
+	/**
+	 * Este es el constructor de la clase VentanaPrincipal es aquel al cual se le asigna la
+	 * inicialización. <b>post</b> Se debe crear cada uno de los objetos o
+	 * caracteristicas dadas en el constructor<br>
+	 */
+	
 	public VentanaPrincipal() {
 
 		getContentPane().setLayout(null);
